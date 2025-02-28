@@ -77,4 +77,4 @@ with open("new_label_enc_loc.pkl", "wb") as f:
 
 # Save updated dataset
 df.to_csv("processed_fraudulent_property_data.csv", index=False)
-print("✅ ML Pipeline Completed: Fraud Detection & Analysis Results Saved.")
+print("ML Pipeline Completed: Fraud Detection & Analysis Results Saved.")
