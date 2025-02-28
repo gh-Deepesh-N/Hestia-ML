@@ -2,14 +2,15 @@ import pandas as pd
 import numpy as np
 import pickle
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 
 # Load dataset
-df = pd.read_csv(r"C:\Users\rufus\Desktop\hestia-ml\Updated_Fraudulent_Property_Dataset.csv")
+df = pd.read_csv(r"enter file path")
 
 # Encode categorical variables
 label_enc_type = LabelEncoder()
@@ -56,7 +57,7 @@ text_fraud_prob = log_reg_text_model.predict_proba(X_text)[:, 1]  # Probability 
 
 # Compute Final Fraud Score (Weighted Combination)
 df["FraudScore"] = (0.6 * price_fraud_prob) + (0.4 * text_fraud_prob)
-df["FinalFraudDecision"] = df["FraudScore"].apply(lambda x: "Fraudulent" if x > 0.5 else "Legit")
+df["FinalFraudDecision"] = df["FraudScore"].apply(lambda x: "Fraudulent" if x > 0.512 else "Legit")
 
 # Save models for future use
 with open("new_random_forest_fraud_model.pkl", "wb") as f:
